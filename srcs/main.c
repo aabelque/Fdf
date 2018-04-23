@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 12:48:03 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/20 15:45:50 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/04/23 17:45:42 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ void		error(char *str)
 
 int			main(int ac, char **av)
 {
+	t_env	*e;
+
 	if (ac < 2)
 		error("Usage : ./fdf <filename>");
-	else
-		parse_map(&av[1]);
-	//mlx_loop(e.mlx);
+	if (!(e = ft_memalloc(sizeof(t_env))))
+		ft_error_malloc();
+	parse_map(&av[1], e);
+	init_mlx(e);
+	mlx_loop(e->mlx);
 	return (0);
 }

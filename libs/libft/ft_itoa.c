@@ -6,12 +6,11 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 18:03:02 by aabelque          #+#    #+#             */
-/*   Updated: 2017/11/30 16:35:07 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/04/23 18:30:35 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static	int		ft_size_number(int n)
 {

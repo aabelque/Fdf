@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/20 15:46:21 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/04/23 17:45:47 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@
 
 # define X_WIN 2048
 # define Y_WIN 1152
+# define SCALE 20
 
-typedef enum	e_key
+typedef enum		e_key
 {
 	K_A = 0,
 	K_S,
@@ -57,45 +58,54 @@ typedef enum	e_key
 	K_RIGHT,
 	K_DOWN,
 	K_UP
-}				t_key;
+}					t_key;
 
-typedef struct	s_img
+typedef struct		s_img
 {
-	void		*img;
-	int			*addr;
-	int			bpp;
-	int			s_line;
-	int			endian;
-}				t_img;
+	void			*img;
+	int				*addr;
+	int				bpp;
+	int				s_line;
+	int				endian;
+}					t_img;
 
-typedef struct	s_vec
+typedef struct		s_vec
 {
-	int			x;
-	int			y;
-	int			z;
-}				t_vec;
+	float			x;
+	float			y;
+	float			z;
+}					t_vec;
 
-typedef struct	s_map
+typedef struct		s_map
 {
-	char		**line;
-	int			nb_line;
-	int			len;
-}				t_map;
+	char			**line;
+	int				nb_line;
+	int				pt_line;
+	int				points;
+	int				len;
+	t_list			*vector;
+}					t_map;
 
-typedef struct	s_env
+typedef struct		s_env
 {
-	void		*mlx;
-	void		*win;
-	int			fd;
-	int			ret;
-	t_map		map;
-	t_img		img;
-}				t_env;
+	void			*mlx;
+	void			*win;
+	int				fd;
+	int				ret;
+	t_map			map;
+	t_img			img;
+}					t_env;
 
-void			free_tab(char **tab);
-void			error(char *str);
-void			ft_error_map(void);
-void			ft_error_malloc(void);
-void			parse_map(char **av);
-int				ft_nb_line(char **av);
+int					init_mlx(t_env *e);
+int					loop_hook(t_env *e);
+int					key_hook(int keycode, void *param);
+void				print_vlist(t_list *vector);
+void				create_vec(t_env *e, int j);
+void				free_tab(char **tab);
+void				error(char *str);
+void				ft_error_map(void);
+int					ft_valid_map(t_env *e);
+void				ft_error_malloc(void);
+void				parse_map(char **av, t_env *e);
+int					ft_nb_line(char **av);
 #endif

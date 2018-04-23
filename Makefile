@@ -6,7 +6,7 @@
 #    By: aabelque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 12:34:03 by aabelque          #+#    #+#              #
-#    Updated: 2018/04/19 16:50:36 by aabelque         ###   ########.fr        #
+#    Updated: 2018/04/23 18:32:56 by aabelque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ CFLAG = -O3 -Wall -Werror -Wextra -g
 MAKE = make
 SRC = srcs/main.c \
 	  srcs/parse.c \
-	  srcs/error.c
+	  srcs/error.c \
+	  srcs/init_mlx.c \
 
 OBJS = $(SRC:%.c=%.o)
 	INCDIR = include/
