@@ -6,7 +6,7 @@
 #    By: aabelque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 12:34:03 by aabelque          #+#    #+#              #
-#    Updated: 2018/04/23 18:32:56 by aabelque         ###   ########.fr        #
+#    Updated: 2018/04/25 17:39:08 by aabelque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,17 @@ NAME = fdf
 
 CC = gcc
 
-CFLAG = -O3 -Wall -Werror -Wextra -g 
+CFLAG = -O3 -Wall -Werror -Wextra -g
 
 MAKE = make
+
+
+
 SRC = srcs/main.c \
 	  srcs/parse.c \
 	  srcs/error.c \
 	  srcs/init_mlx.c \
+	  srcs/bresenham.c
 
 OBJS = $(SRC:%.c=%.o)
 	INCDIR = include/
@@ -43,9 +47,17 @@ MLXLK = mlx
 
 ALLINCS = -I$(LFTPATH) -I$(LMLXPATH) -I$(INCDIR)
 
+ifneq ($(NOERR),yes)
+	CFLAG -= -Werror
+endif
+
+ifeq ($(SAN),yes)
+	CFLAG += -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
+endif
+
 all: $(NAME)
 
-$(NAME): $(LFTPATH)$(LIBFT) $(LMLXPATH)$(LIBMLX) $(OBJS) $(INC)
+$(NAME): $(LFTPATH)$(LIBFT) $(LMLXPATH)$(LIBMLX) $(OBJS) $(INC) 
 	@$(CC) -O3 -o $(NAME) $(ALLINCS) -L$(LFTPATH) -l$(FTLK) -L$(LMLXPATH) -l$(MLXLK) $(FRAMEWORKS) $(OBJS)
 	-@echo "\033[32m Fdf ready.\033[0m"
 
@@ -53,7 +65,7 @@ $(NAME): $(LFTPATH)$(LIBFT) $(LMLXPATH)$(LIBMLX) $(OBJS) $(INC)
 	@$(CC) $(CFLAG) -o $@ $(ALLINCS) -c $<
 
 $(LFTPATH)$(LIBFT):
-	$(MAKE) -C $(LFTPATH)
+	$(MAKE) -C $(LFTPATH) NOERR=$(NOERR) SAN=$(SAN)
 
 $(LMLXPATH)$(LIBMLX):
 	$(MAKE) -C $(LMLXPATH)

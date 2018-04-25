@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/23 17:45:47 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/04/25 18:37:35 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include <mlx.h>
+# include <math.h>
 # include "libft.h"
 # include <stdlib.h>
 
@@ -45,7 +46,7 @@
 
 # define X_WIN 2048
 # define Y_WIN 1152
-# define SCALE 20
+# define SCALE 50
 
 typedef enum		e_key
 {
@@ -76,6 +77,12 @@ typedef struct		s_vec
 	float			z;
 }					t_vec;
 
+typedef struct		s_vec2
+{
+	int				x;
+	int				y;
+}					t_vec2;
+
 typedef struct		s_map
 {
 	char			**line;
@@ -92,10 +99,14 @@ typedef struct		s_env
 	void			*win;
 	int				fd;
 	int				ret;
+	int				i;
 	t_map			map;
 	t_img			img;
+	t_vec			vec1;
+	t_vec			vec2;
 }					t_env;
 
+void				bresenham(t_vec a, t_vec b, int *addr);
 int					init_mlx(t_env *e);
 int					loop_hook(t_env *e);
 int					key_hook(int keycode, void *param);
