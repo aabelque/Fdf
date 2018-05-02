@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 13:32:09 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/30 18:02:12 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/02 17:32:43 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void			create_vec(t_env *e, int j)
 	i = 0;
 	while (e->map.line[i])
 	{
-		vec.x = (float)i * SCALE + 300;
-		vec.y = (float)j * SCALE + 300;
+		vec.x = (float)i * SCALE + 200;
+		vec.y = (float)j * SCALE + 200;
 		vec.z = (float)ft_atoi(e->map.line[i]);
 		if (!(tmp = ft_lstnew((void const *)&vec, sizeof(t_vec))))
 			ft_error_malloc();

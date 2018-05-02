@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 13:07:41 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/30 18:02:15 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/02 17:56:34 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ int		key_hook(int keycode, void *param)
 int		loop_hook(t_env *e)
 {
 	draw(e);
+	draw2(e);
+	if (mlx_put_image_to_window(e->mlx, e->win, e->img.img, 0, 0) == -1)
+		ft_error("fail to put image");
 	return (0);
 }
 

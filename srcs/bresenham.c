@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 13:12:27 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/25 18:37:39 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/02 17:56:32 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static	void		bresenham2(t_vec a, t_vec b, t_vec2 er, int *addr)
 
 	i = 0;
 	d = (t_vec2){2 * er.x, 2 * er.y};
-	//in = (t_vec2){1, 1};
 	ddy = er.y;
 	in.x = a.x > b.x ? -1 : 1;
 	in.y = a.y > b.y ? -1 : 1;
@@ -48,7 +47,6 @@ static	void		bresenham1(t_vec a, t_vec b, t_vec2 er, int *addr)
 
 	i = 0;
 	d = (t_vec2){2 * er.x, 2 * er.y};
-//	in = (t_vec2){1, 1};
 	ddx = er.x;
 	in.x = a.x > b.x ? -1 : 1;
 	in.y = a.y > b.y ? -1 : 1;
@@ -66,7 +64,7 @@ static	void		bresenham1(t_vec a, t_vec b, t_vec2 er, int *addr)
 	}
 }
 
-void				bresenham(t_vec a, t_vec b, int	*addr)
+void				bresenham(t_vec a, t_vec b, int *addr)
 {
 	t_vec2			er;
 	int				ddx;
@@ -76,7 +74,6 @@ void				bresenham(t_vec a, t_vec b, int	*addr)
 	er.y = fabs(b.y - a.y);
 	ddx = er.x;
 	ddy = er.y;
-
 	if (ddx > ddy)
 		bresenham1(a, b, er, addr);
 	if (ddx < ddy)

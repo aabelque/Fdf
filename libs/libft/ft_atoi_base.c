@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/01 13:47:22 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/05 18:24:50 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/02 15:26:20 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static	int		ft_base2(char c, int str_base)
 
 int				ft_atoi_base(const char *str, int str_base)
 {
-	int 		sign;
-	int 		value;
+	int			sign;
+	int			value;
 
 	value = 0;
 	if (str_base <= 1 || str_base > 36)

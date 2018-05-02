@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   epur_str.c                                         :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/30 11:34:58 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/02 15:27:03 by aabelque         ###   ########.fr       */
+/*   Created: 2018/05/02 17:37:03 by aabelque          #+#    #+#             */
+/*   Updated: 2018/05/02 17:56:29 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-void	epur_str(char *str)
+int		set_colors(void)
 {
-	int i;
+	int	*colors;
+	static
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == ' ' || str[i] == '\t')
-		{
-			while (str[i] && str[i + 1] &&
-					(str[i + 1] == ' ' || str[i + 1] == '\t'))
-				i++;
-			if (!str[i + 1])
-				break ;
-			ft_putchar(' ');
-		}
-		else if (str[i])
-			ft_putchar(str[i]);
-		i++;
-	}
-	ft_putchar('\n');
+	if (!(colors = ft_memalloc(sizeof(int) * NB_COLORMAX)))
+		return (NULL);
+	colors = { C_WHITE, C_RED, C_GREEN, C_BLUE, C_ABR, C_ACA, C_AMA, C_AYELL,
+		C_YELL, C_ARED, C_AUB, C_AZUR, C_AZUR1, C_CBLUE, C_LAV,C_BORD, C_BRUN,
+		C_BLUEF, C_GREY, C_GREYA, C_BROWN, C_OLIV, C_ORANGE, C_MILITARY };
+
 }

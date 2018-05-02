@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/30 18:02:16 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/02 17:56:35 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # define C_RED 0x00ff0000
 # define C_GREEN 0x0000ff00
 # define C_BLUE 0x000000ff
-# define C_BLACK 0x00000000
 # define C_ABR 0x00e67e30
 # define C_ACA 0x0088421d
 # define C_AMA 0x0082C46C
@@ -44,8 +43,10 @@
 # define C_ORANGE 0x00ed7f10
 # define C_MILITARY 0x00596643
 
-# define X_WIN 2048
-# define Y_WIN 1152
+# define NB_COLORMAX 24
+
+# define X_WIN 3200
+# define Y_WIN 1800
 # define SCALE 50
 
 typedef enum		e_key
@@ -106,6 +107,7 @@ typedef struct		s_env
 	t_img			img;
 }					t_env;
 
+void				draw2(t_env *e);
 void				draw(t_env *e);
 void				*lst_to_array(t_list *vector);
 void				bresenham(t_vec a, t_vec b, int *addr);
