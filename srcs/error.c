@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:21:16 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/22 17:56:16 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/04/30 16:07:32 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ void			free_tab(char **tab)
 		i++;
 	}
 	free(tab);
+}
+
+void			ft_error(char *str)
+{
+	ft_putendl(str);
+	exit(1);
 }
 
 void			ft_error_map(void)

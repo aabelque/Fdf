@@ -6,23 +6,44 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 13:32:09 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/25 17:50:58 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:02:12 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		create_vec(t_env *e, int j)
+void			*lst_to_array(t_list *vector)
 {
-	int		i;
-	t_vec	vec;
-	t_list	*tmp;
+	size_t		size_v;
+	size_t		nb_v;
+	size_t		i;
+	char		*mat;
+
+	size_v = vector->content_size;
+	nb_v = ft_nb_elemlist(vector);
+	i = 0;
+	if (!(mat = ft_memalloc(nb_v * size_v)))
+		ft_error_malloc();
+	while (i < nb_v)
+	{
+		ft_memcpy(&(mat[i * size_v]), vector->content, size_v);
+		vector = vector->next;
+		i++;
+	}
+	return (mat);
+}
+
+void			create_vec(t_env *e, int j)
+{
+	int			i;
+	t_vec		vec;
+	t_list		*tmp;
 
 	i = 0;
 	while (e->map.line[i])
 	{
-		vec.x = (float)i * SCALE + 500;
-		vec.y = (float)j * SCALE + 500;
+		vec.x = (float)i * SCALE + 300;
+		vec.y = (float)j * SCALE + 300;
 		vec.z = (float)ft_atoi(e->map.line[i]);
 		if (!(tmp = ft_lstnew((void const *)&vec, sizeof(t_vec))))
 			ft_error_malloc();
@@ -31,10 +52,10 @@ void		create_vec(t_env *e, int j)
 	}
 }
 
-void		parse_map(char **av, t_env *e)
+void			parse_map(char **av, t_env *e)
 {
-	char	*line;
-	int		j;
+	char		*line;
+	int			j;
 
 	j = 0;
 	if ((e->fd = open(*av, O_RDONLY)) > 0)
@@ -50,5 +71,6 @@ void		parse_map(char **av, t_env *e)
 		}
 		e->map.nb_line = j;
 		e->map.points = e->map.pt_line * e->map.nb_line;
+		e->map.matrice = lst_to_array(e->map.vector);
 	}
 }

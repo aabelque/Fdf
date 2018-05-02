@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 13:07:41 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/25 18:37:33 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:02:15 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,7 @@ int		key_hook(int keycode, void *param)
 
 int		loop_hook(t_env *e)
 {
-	t_vec	a;
-	t_vec	b;
-	t_list	*tmp;
-
-	tmp = e->map.vector->next;
-	while (e->map.vector->next)
-	{
-		a = *((t_vec *)(e->map.vector->content));
-		b = *((t_vec *)(tmp->content));
-//		e->img.addr[(int)a.y * e->img.s_line / 4 + (int)a.x] = C_WHITE;
-		bresenham(a, b, e->img.addr);
-		e->map.vector = e->map.vector->next;
-		tmp = tmp->next;
-	}
-	mlx_put_image_to_window(e->mlx, e->win, e->img.img, 0, 0);
+	draw(e);
 	return (0);
 }
 

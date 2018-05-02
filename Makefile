@@ -6,7 +6,7 @@
 #    By: aabelque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 12:34:03 by aabelque          #+#    #+#              #
-#    Updated: 2018/04/25 17:39:08 by aabelque         ###   ########.fr        #
+#    Updated: 2018/04/30 17:08:49 by aabelque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC = srcs/main.c \
 	  srcs/parse.c \
 	  srcs/error.c \
 	  srcs/init_mlx.c \
-	  srcs/bresenham.c
+	  srcs/bresenham.c \
+	  srcs/draw.c
 
 OBJS = $(SRC:%.c=%.o)
 	INCDIR = include/

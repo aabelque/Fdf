@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/04/25 18:37:35 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/04/30 18:02:16 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define C_RED 0x00ff0000
 # define C_GREEN 0x0000ff00
 # define C_BLUE 0x000000ff
-
+# define C_BLACK 0x00000000
 # define C_ABR 0x00e67e30
 # define C_ACA 0x0088421d
 # define C_AMA 0x0082C46C
@@ -88,8 +88,10 @@ typedef struct		s_map
 	char			**line;
 	int				nb_line;
 	int				pt_line;
+	size_t			nb_v;
 	int				points;
 	int				len;
+	t_vec			*matrice;
 	t_list			*vector;
 }					t_map;
 
@@ -102,10 +104,10 @@ typedef struct		s_env
 	int				i;
 	t_map			map;
 	t_img			img;
-	t_vec			vec1;
-	t_vec			vec2;
 }					t_env;
 
+void				draw(t_env *e);
+void				*lst_to_array(t_list *vector);
 void				bresenham(t_vec a, t_vec b, int *addr);
 int					init_mlx(t_env *e);
 int					loop_hook(t_env *e);
@@ -113,7 +115,7 @@ int					key_hook(int keycode, void *param);
 void				print_vlist(t_list *vector);
 void				create_vec(t_env *e, int j);
 void				free_tab(char **tab);
-void				error(char *str);
+void				ft_error(char *str);
 void				ft_error_map(void);
 int					ft_valid_map(t_env *e);
 void				ft_error_malloc(void);
