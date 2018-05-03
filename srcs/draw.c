@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 16:08:02 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/02 17:36:44 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/03 14:02:05 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void		draw(t_env *e)
 {
-	t_vec	a;
-	t_vec	b;
 	t_vec	*tmp;
 	int		x;
 	int		y;
@@ -27,9 +25,9 @@ void		draw(t_env *e)
 		x = 0;
 		while (x < e->map.pt_line - 1)
 		{
-			a = *tmp;
-			b = *(tmp + 1);
-			bresenham(a, b, e->img.addr);
+			e->mat.a = *tmp;
+			e->mat.b = *(tmp + 1);
+			bresenham(e, e->img.addr);
 			x++;
 			tmp++;
 		}
@@ -40,8 +38,6 @@ void		draw(t_env *e)
 
 void		draw2(t_env *e)
 {
-	t_vec	a;
-	t_vec	b;
 	t_vec	*tmp;
 	int		x;
 	int		y;
@@ -53,9 +49,9 @@ void		draw2(t_env *e)
 		x = 0;
 		while (x < e->map.pt_line)
 		{
-			a = *(tmp + y * e->map.pt_line + x);
-			b = *(tmp + (y + 1) * e->map.pt_line + x);
-			bresenham(a, b, e->img.addr);
+			e->mat.a = *(tmp + y * e->map.pt_line + x);
+			e->mat.b = *(tmp + (y + 1) * e->map.pt_line + x);
+			bresenham(e, e->img.addr);
 			x++;
 		}
 		y++;

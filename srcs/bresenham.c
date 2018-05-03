@@ -6,13 +6,13 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 13:12:27 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/02 17:56:32 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/03 17:14:54 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static	void		bresenham2(t_vec a, t_vec b, t_vec2 er, int *addr)
+static	void		bresenham2(t_env *e, t_vec2 er, int *addr)
 {
 	t_vec2			d;
 	t_vec2			in;
@@ -22,23 +22,23 @@ static	void		bresenham2(t_vec a, t_vec b, t_vec2 er, int *addr)
 	i = 0;
 	d = (t_vec2){2 * er.x, 2 * er.y};
 	ddy = er.y;
-	in.x = a.x > b.x ? -1 : 1;
-	in.y = a.y > b.y ? -1 : 1;
+	in.x = e->mat.a.x > e->mat.b.x ? -1 : 1;
+	in.y = e->mat.a.y > e->mat.b.y ? -1 : 1;
 	while (i <= ddy)
 	{
-		addr[(int)a.x + (int)a.y * X_WIN] = C_WHITE;
+		addr[(int)e->mat.a.x + (int)e->mat.a.y * X_WIN] = e->color;
 		i++;
-		a.y += in.y;
+		e->mat.a.y += in.y;
 		er.y -= d.x;
 		if (er.y < 0)
 		{
-			a.x += in.x;
+			e->mat.a.x += in.x;
 			er.y += d.y;
 		}
 	}
 }
 
-static	void		bresenham1(t_vec a, t_vec b, t_vec2 er, int *addr)
+static	void		bresenham1(t_env *e, t_vec2 er, int *addr)
 {
 	t_vec2			d;
 	t_vec2			in;
@@ -48,34 +48,34 @@ static	void		bresenham1(t_vec a, t_vec b, t_vec2 er, int *addr)
 	i = 0;
 	d = (t_vec2){2 * er.x, 2 * er.y};
 	ddx = er.x;
-	in.x = a.x > b.x ? -1 : 1;
-	in.y = a.y > b.y ? -1 : 1;
+	in.x = e->mat.a.x > e->mat.b.x ? -1 : 1;
+	in.y = e->mat.a.y > e->mat.b.y ? -1 : 1;
 	while (i <= ddx)
 	{
-		addr[(int)a.x + (int)a.y * X_WIN] = C_WHITE;
+		addr[(int)e->mat.a.x + (int)e->mat.a.y * X_WIN] = e->color;
 		i++;
-		a.x += in.x;
+		e->mat.a.x += in.x;
 		er.x -= d.y;
 		if (er.x < 0)
 		{
-			a.y += in.y;
+			e->mat.a.y += in.y;
 			er.x += d.x;
 		}
 	}
 }
 
-void				bresenham(t_vec a, t_vec b, int *addr)
+void				bresenham(t_env *e, int *addr)
 {
 	t_vec2			er;
 	int				ddx;
 	int				ddy;
 
-	er.x = fabs(b.x - a.x);
-	er.y = fabs(b.y - a.y);
+	er.x = fabs(e->mat.b.x - e->mat.a.x);
+	er.y = fabs(e->mat.b.y - e->mat.a.y);
 	ddx = er.x;
 	ddy = er.y;
 	if (ddx > ddy)
-		bresenham1(a, b, er, addr);
+		bresenham1(e, er, addr);
 	if (ddx < ddy)
-		bresenham2(a, b, er, addr);
+		bresenham2(e, er, addr);
 }

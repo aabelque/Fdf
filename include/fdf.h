@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/02 17:56:35 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/03 17:15:03 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define C_AYELL 0x00f0C300
 # define C_YELL 0x00ffff00
 # define C_ARED 0x00ad360e
-# define C_AUB 0x00370028
+# define C_AIM 0x0079f8f8
 # define C_AZUR 0x001e7fCb
 # define C_AZUR1 0x0074d0f1
 # define C_CBLUE 0x00048b9a
@@ -35,18 +35,18 @@
 # define C_BORD 0x006d071a
 # define C_BRUN 0x00Cd853f
 # define C_BLUEF 0x00318Ce
-# define C_WHITE 0x00fefefe
 # define C_GREY 0x00606060
 # define C_GREYA 0x00afafaf
 # define C_BROWN 0x00582900
 # define C_OLIV 0x00708d23
 # define C_ORANGE 0x00ed7f10
 # define C_MILITARY 0x00596643
+# define C_WHITE 0x00fefefe
 
 # define NB_COLORMAX 24
 
-# define X_WIN 3200
-# define Y_WIN 1800
+# define X_WIN 2800
+# define Y_WIN 1400
 # define SCALE 50
 
 typedef enum		e_key
@@ -54,6 +54,7 @@ typedef enum		e_key
 	K_A = 0,
 	K_S,
 	K_D,
+	K_COLORS = 8,
 	K_W = 13,
 	K_ESC = 53,
 	K_LEFT = 123,
@@ -70,7 +71,6 @@ typedef struct		s_img
 	int				s_line;
 	int				endian;
 }					t_img;
-
 typedef struct		s_vec
 {
 	float			x;
@@ -96,6 +96,12 @@ typedef struct		s_map
 	t_list			*vector;
 }					t_map;
 
+typedef struct		s_matrice
+{
+	t_vec			a;
+	t_vec			b;
+}					t_matrice;
+
 typedef struct		s_env
 {
 	void			*mlx;
@@ -103,17 +109,20 @@ typedef struct		s_env
 	int				fd;
 	int				ret;
 	int				i;
+	int				color;
+	t_matrice		mat;
 	t_map			map;
 	t_img			img;
 }					t_env;
 
+void				set_colors(int *color);
 void				draw2(t_env *e);
 void				draw(t_env *e);
 void				*lst_to_array(t_list *vector);
-void				bresenham(t_vec a, t_vec b, int *addr);
+void				bresenham(t_env *e, int *addr);
 int					init_mlx(t_env *e);
 int					loop_hook(t_env *e);
-int					key_hook(int keycode, void *param);
+int					key_hook(int keycode, t_env *e);
 void				print_vlist(t_list *vector);
 void				create_vec(t_env *e, int j);
 void				free_tab(char **tab);
@@ -123,4 +132,6 @@ int					ft_valid_map(t_env *e);
 void				ft_error_malloc(void);
 void				parse_map(char **av, t_env *e);
 int					ft_nb_line(char **av);
+char				*display_controls(void);
+void				display_controls2(void);
 #endif

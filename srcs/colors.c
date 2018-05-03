@@ -6,21 +6,48 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/02 17:37:03 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/02 17:56:29 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/03 14:31:08 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		set_colors(void)
+static	void	set_tab_color(int *color)
 {
-	int	*colors;
-	static
+	color[0] = C_OLIV;
+	color[1] = C_WHITE;
+	color[2] = C_RED;
+	color[3] = C_GREEN;
+	color[4] = C_BLUE;
+	color[5] = C_ABR;
+	color[6] = C_ACA;
+	color[7] = C_AMA;
+	color[8] = C_AYELL;
+	color[9] = C_YELL;
+	color[10] = C_ARED;
+	color[11] = C_AIM;
+	color[12] = C_AZUR;
+	color[13] = C_AZUR1;
+	color[14] = C_CBLUE;
+	color[15] = C_LAV;
+	color[16] = C_BORD;
+	color[17] = C_BRUN;
+	color[18] = C_BLUEF;
+	color[19] = C_GREY;
+	color[20] = C_GREYA;
+	color[21] = C_BROWN;
+	color[22] = C_ORANGE;
+	color[23] = C_MILITARY;
+}
 
-	if (!(colors = ft_memalloc(sizeof(int) * NB_COLORMAX)))
-		return (NULL);
-	colors = { C_WHITE, C_RED, C_GREEN, C_BLUE, C_ABR, C_ACA, C_AMA, C_AYELL,
-		C_YELL, C_ARED, C_AUB, C_AZUR, C_AZUR1, C_CBLUE, C_LAV,C_BORD, C_BRUN,
-		C_BLUEF, C_GREY, C_GREYA, C_BROWN, C_OLIV, C_ORANGE, C_MILITARY };
+void			set_colors(int *color)
+{
+	static int	i;
+	int			colors[NB_COLORMAX];
 
+	set_tab_color(colors);
+	i++;
+	if (i == NB_COLORMAX)
+		i = 0;
+	*color = colors[i];
 }
