@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/04 11:57:09 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/04 18:15:56 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,13 @@ typedef struct		s_img
 	int				s_line;
 	int				endian;
 }					t_img;
+
 typedef struct		s_vec
 {
 	float			x;
 	float			y;
 	float			z;
+	float			w;
 }					t_vec;
 
 typedef struct		s_vec2
@@ -101,6 +103,14 @@ typedef struct		s_matrice
 	t_vec			a;
 	t_vec			b;
 }					t_matrice;
+
+typedef struct		s_matransf
+{
+	t_vec			v1;
+	t_vec			v2;
+	t_vec			v3;
+	t_vec			v4;
+}					t_matransf;
 
 typedef struct		s_env
 {
@@ -134,4 +144,10 @@ void				parse_map(char **av, t_env *e);
 int					ft_nb_line(char **av);
 char				*display_controls(void);
 void				display_controls2(void);
+t_vec				newvec(float x, float y, float z, float w);
+t_matransf			rotxmat(float deg);
+t_matransf			rotymat(float deg);
+t_matransf			rotzmat(float deg);
+t_matransf			transl_mat(float x, float y, float z);
+t_matransf			scal_mat(float s);
 #endif
