@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/03 17:15:03 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/04 11:57:09 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@
 
 # define NB_COLORMAX 24
 
-# define X_WIN 2800
-# define Y_WIN 1400
+# define X_WIN 2560
+# define Y_WIN 1440
 # define SCALE 50
 
 typedef enum		e_key

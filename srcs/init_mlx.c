@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 13:07:41 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/03 17:16:08 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/04 11:48:09 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,13 @@ int			loop_hook(t_env *e)
 	draw2(e);
 	if (mlx_put_image_to_window(e->mlx, e->win, e->img.img, 0, 0) == -1)
 		ft_error("fail to put image");
-	mlx_string_put(e->mlx, e->win, X_WIN - 400, 0, C_WHITE, str);
+	mlx_string_put(e->mlx, e->win, X_WIN - 400, 1, C_WHITE, str);
 	return (0);
 }
 
 int			init_mlx(t_env *e)
 {
+	set_colors(&(e->color));
 	e->mlx = mlx_init();
 	e->win = mlx_new_window(e->mlx, X_WIN, Y_WIN, "FDF");
 	e->img.img = mlx_new_image(e->mlx, X_WIN, Y_WIN);

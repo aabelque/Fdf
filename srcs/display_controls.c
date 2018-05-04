@@ -1,36 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   display_controls.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/16 12:48:03 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/04 11:57:55 by aabelque         ###   ########.fr       */
+/*   Created: 2018/05/04 11:50:24 by aabelque          #+#    #+#             */
+/*   Updated: 2018/05/04 11:59:26 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		error(char *str)
+void		display_controls2(void)
 {
-	ft_putendl(str);
-	exit(1);
+	ft_putstr("\
+__________________________\n\
+CONTROLS:\n\
+\n\
+Quit:\n\
+	KEY: ESC\n\
+\n\
+Color:\n\
+	KEY: C\n\
+__________________________\n\
+");
 }
 
-int			main(int ac, char **av)
+char		*display_controls(void)
 {
-	t_env	*e;
-	int		i;
+	char	*str;
 
-	i = 0;
-	if (ac < 2)
-		error("Usage : ./fdf <filename>");
-	if (!(e = ft_memalloc(sizeof(t_env))))
-		ft_error_malloc();
-	display_controls2();
-	parse_map(&av[1], e);
-	init_mlx(e);
-	mlx_loop(e->mlx);
-	return (0);
+	str = "\
+CONTROLS: \n\
+\n\
+Quit-> \n\
+	ESC \n\
+\n\
+Color-> \n\
+	C\n\
+";
+	return (str);
 }
