@@ -6,7 +6,7 @@
 #    By: aabelque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 12:34:03 by aabelque          #+#    #+#              #
-#    Updated: 2018/05/04 16:57:52 by aabelque         ###   ########.fr        #
+#    Updated: 2018/05/05 16:59:27 by aabelque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,11 @@ SRC = srcs/main.c \
 	  srcs/colors.c \
 	  srcs/display_controls.c \
 	  srcs/rot_matrice.c \
-	  srcs/transl_matrice.c
+	  srcs/transl_matrice.c \
+	  srcs/cal_matrice.c \
+	  srcs/key_hook.c \
+	  srcs/apply_calmat.c \
+	  srcs/map_control.c
 
 OBJS = $(SRC:%.c=%.o)
 	INCDIR = include/

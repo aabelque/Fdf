@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 13:32:09 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/02 17:32:43 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/05 14:22:13 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,6 @@ void			parse_map(char **av, t_env *e)
 		}
 		e->map.nb_line = j;
 		e->map.points = e->map.pt_line * e->map.nb_line;
-		e->map.matrice = lst_to_array(e->map.vector);
+		e->map.vertex = lst_to_array(e->map.vector);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/30 16:08:02 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/04 18:15:59 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/05 16:57:23 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void		draw(t_env *e)
 	int		x;
 	int		y;
 
-	tmp = e->map.matrice;
+	tmp = e->map.vertex;
 	y = 0;
 	while (y < e->map.nb_line)
 	{
@@ -27,6 +27,8 @@ void		draw(t_env *e)
 		{
 			e->mat.a = *tmp;
 			e->mat.b = *(tmp + 1);
+			if (!out_map(&e->mat.a) && !out_map(&e->mat.b))
+				return ;
 			bresenham(e, e->img.addr);
 			x++;
 			tmp++;
@@ -42,7 +44,7 @@ void		draw2(t_env *e)
 	int		x;
 	int		y;
 
-	tmp = e->map.matrice;
+	tmp = e->map.vertex;
 	y = 0;
 	while (y < e->map.nb_line - 1)
 	{
@@ -51,6 +53,8 @@ void		draw2(t_env *e)
 		{
 			e->mat.a = *(tmp + y * e->map.pt_line + x);
 			e->mat.b = *(tmp + (y + 1) * e->map.pt_line + x);
+			if (!out_map(&e->mat.a) && !out_map(&e->mat.b))
+				return ;
 			bresenham(e, e->img.addr);
 			x++;
 		}

@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:46:10 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/04 17:37:34 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/05 15:05:04 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ t_matransf		scal_mat(float s)
 	matscal.v2 = newvec(0.0, s, 0.0, 0.0);
 	matscal.v3 = newvec(0.0, 0.0, s, 0.0);
 	matscal.v4 = newvec(0.0, 0.0, 0.0, 1.0);
-	return (matransl);
+	return (matscal);
 }

@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/04 18:15:56 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/05 18:07:35 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@
 
 # define NB_COLORMAX 24
 
+# define MOVXUP M_PI / 180
+# define MOVXDO -M_PI / 180
+# define MOVYUP M_PI / 180
+# define MOVYDO -M_PI / 180
+# define MOVZUP M_PI / 180
+# define MOVZDO -M_PI / 180
+
+# define TUP -100
+# define TDO 100
+# define TLEFT -100
+# define TRIGHT 100
+
 # define X_WIN 2560
 # define Y_WIN 1440
 # define SCALE 50
@@ -60,7 +72,13 @@ typedef enum		e_key
 	K_LEFT = 123,
 	K_RIGHT,
 	K_DOWN,
-	K_UP
+	K_UP,
+	K_ROTX = 0,
+	K_ROTX2 = 12, 
+	K_ROTY = 2,
+	K_ROTY2 = 14,
+	K_ROTZ = 13,
+	K_ROTZ2 = 1
 }					t_key;
 
 typedef struct		s_img
@@ -94,7 +112,7 @@ typedef struct		s_map
 	size_t			nb_v;
 	int				points;
 	int				len;
-	t_vec			*matrice;
+	t_vec			*vertex;
 	t_list			*vector;
 }					t_map;
 
@@ -120,6 +138,7 @@ typedef struct		s_env
 	int				ret;
 	int				i;
 	int				color;
+	t_vec			center;
 	t_matrice		mat;
 	t_map			map;
 	t_img			img;
@@ -150,4 +169,16 @@ t_matransf			rotymat(float deg);
 t_matransf			rotzmat(float deg);
 t_matransf			transl_mat(float x, float y, float z);
 t_matransf			scal_mat(float s);
+void				calculated_matrice(t_vec *m, t_matransf *mt);
+void				apply_calmat(t_env *e, t_vec *m, t_matransf *mt);
+void				apply_calmat2(t_env *e, t_vec *m, t_matransf *mt);
+void				matcal_rot(t_env *e, float deg, char axe);
+void				matcal_transl(t_env *e, float x, float y, float z);
+void				matcal_scal(t_env *e, float s);
+void				redraw(t_env *e);
+int					expose_hook(t_env *e);
+void				get_center(t_env *e);
+void				map_control(t_env *e);
+int					out_map(t_vec *vertex);
+float				radian_deg(float deg);
 #endif
