@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 13:07:41 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/05 17:15:09 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/08 15:14:33 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int			loop_hook(t_env *e)
 	char	*str;
 
 	str = display_controls();
-//	map_control(e);
 	draw(e);
 	draw2(e);
 	if (mlx_put_image_to_window(e->mlx, e->win, e->img.img, 0, 0) == -1)
@@ -56,6 +55,6 @@ int			init_mlx(t_env *e)
 	e->img.addr = (int*)mlx_get_data_addr(e->img.img, &(e->img.bpp),
 			&(e->img.s_line), &(e->img.endian));
 	mlx_loop_hook(e->mlx, loop_hook, e);
-	mlx_key_hook(e->win, key_hook, e);
+	mlx_hook(e->win, 2, 3, key_hook, e);
 	return (0);
 }

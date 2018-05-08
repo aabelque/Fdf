@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 13:12:27 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/04 16:45:33 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/07 11:00:16 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void				bresenham(t_env *e, int *addr)
 	er.y = fabs(e->mat.b.y - e->mat.a.y);
 	ddx = er.x;
 	ddy = er.y;
-	if (ddx > ddy)
+	if (ddx >= ddy)
 		bresenham1(e, er, addr);
 	if (ddx < ddy)
 		bresenham2(e, er, addr);

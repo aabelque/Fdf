@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/16 13:32:09 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/05 14:22:13 by aabelque         ###   ########.fr       */
+/*   Created: 2018/05/07 11:35:48 by aabelque          #+#    #+#             */
+/*   Updated: 2018/05/07 16:38:28 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ void			create_vec(t_env *e, int j)
 	i = 0;
 	while (e->map.line[i])
 	{
-		vec.x = (float)i * SCALE + 200;
-		vec.y = (float)j * SCALE + 200;
-		vec.z = (float)ft_atoi(e->map.line[i]);
+		vec.x = (double)i * SCALE + 700;
+		vec.y = (double)j * SCALE + 300;
+		vec.z = (double)ft_atoi(e->map.line[i]) * 2;
+		vec.w = 1;
 		if (!(tmp = ft_lstnew((void const *)&vec, sizeof(t_vec))))
 			ft_error_malloc();
 		ft_pushback_list(&e->map.vector, tmp);

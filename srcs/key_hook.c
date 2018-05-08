@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 11:25:41 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/05 16:58:07 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/08 15:14:39 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,17 @@ static	void	key_hook_transl(int keycode, t_env *e)
 		matcal_transl(e, TRIGHT, 0, 0);
 }
 
+static	void	key_hook_scal(int keycode, t_env *e)
+{
+	if (keycode == K_SPLUS)
+		matcal_scal(e, SPLUS);
+	if (keycode == K_SLESS)
+		matcal_scal(e, SLESS);
+}
+
 int				key_hook(int keycode, t_env *e)
 {
+	get_center(e);
 	if (keycode == K_ESC)
 	{
 		mlx_destroy_window(e->mlx, e->win);
@@ -51,6 +60,7 @@ int				key_hook(int keycode, t_env *e)
 		set_colors(&(e->color));
 	key_hook_rot(keycode, e);
 	key_hook_transl(keycode, e);
+	key_hook_scal(keycode, e);
 	mlx_destroy_image(e->mlx, e->img.img);
 	expose_hook(e);
 	return (0);

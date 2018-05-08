@@ -6,13 +6,31 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:46:10 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/05 15:05:04 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/07 13:49:49 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_matransf		transl_mat(float x, float y, float z)
+void			calculated_scal(t_vec *m, t_matransf *mt, t_env *e)
+{
+	double		tx;
+	double		ty;
+	double		tz;
+	double		tw;
+
+	(void)e;
+	tx = mt->v1.x * m->x;
+	ty = mt->v2.y * m->y;
+	tz = mt->v3.z * m->z;
+	tw = mt->v4.w * m->w;
+	m->x = tx;
+	m->y = ty;
+	m->z = tz;
+	m->w = tw;
+}
+
+t_matransf		transl_mat(double x, double y, double z)
 {
 	t_matransf	matransl;
 
@@ -23,7 +41,7 @@ t_matransf		transl_mat(float x, float y, float z)
 	return (matransl);
 }
 
-t_matransf		scal_mat(float s)
+t_matransf		scal_mat(double s)
 {
 	t_matransf	matscal;
 

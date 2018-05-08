@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/05 18:07:35 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/08 15:14:31 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,16 @@
 # define TLEFT -100
 # define TRIGHT 100
 
-# define X_WIN 2560
-# define Y_WIN 1440
-# define SCALE 50
+# define SPLUS 1.1
+# define SLESS 0.9
+
+# define X_WIN 2048
+# define Y_WIN 1152
+# define SCALE 10
 
 typedef enum		e_key
 {
 	K_A = 0,
-	K_S,
-	K_D,
 	K_COLORS = 8,
 	K_W = 13,
 	K_ESC = 53,
@@ -78,7 +79,9 @@ typedef enum		e_key
 	K_ROTY = 2,
 	K_ROTY2 = 14,
 	K_ROTZ = 13,
-	K_ROTZ2 = 1
+	K_ROTZ2 = 1,
+	K_SLESS = 78,
+	K_SPLUS = 69
 }					t_key;
 
 typedef struct		s_img
@@ -92,10 +95,10 @@ typedef struct		s_img
 
 typedef struct		s_vec
 {
-	float			x;
-	float			y;
-	float			z;
-	float			w;
+	double			x;
+	double			y;
+	double			z;
+	double			w;
 }					t_vec;
 
 typedef struct		s_vec2
@@ -163,22 +166,25 @@ void				parse_map(char **av, t_env *e);
 int					ft_nb_line(char **av);
 char				*display_controls(void);
 void				display_controls2(void);
-t_vec				newvec(float x, float y, float z, float w);
-t_matransf			rotxmat(float deg);
-t_matransf			rotymat(float deg);
-t_matransf			rotzmat(float deg);
-t_matransf			transl_mat(float x, float y, float z);
-t_matransf			scal_mat(float s);
-void				calculated_matrice(t_vec *m, t_matransf *mt);
-void				apply_calmat(t_env *e, t_vec *m, t_matransf *mt);
-void				apply_calmat2(t_env *e, t_vec *m, t_matransf *mt);
-void				matcal_rot(t_env *e, float deg, char axe);
-void				matcal_transl(t_env *e, float x, float y, float z);
-void				matcal_scal(t_env *e, float s);
+t_vec				newvec(double x, double y, double z, double w);
+t_matransf			rotxmat(double deg);
+t_matransf			rotymat(double deg);
+t_matransf			rotzmat(double deg);
+t_matransf			transl_mat(double x, double y, double z);
+t_matransf			scal_mat(double s);
+void				calculated_matrice(t_vec *m, t_matransf *mt, t_env *e);
+void				matcal_rot(t_env *e, double deg, char axe);
+void				matcal_transl(t_env *e, double x, double y, double z);
+void				matcal_scal(t_env *e, double s);
 void				redraw(t_env *e);
 int					expose_hook(t_env *e);
 void				get_center(t_env *e);
 void				map_control(t_env *e);
 int					out_map(t_vec *vertex);
-float				radian_deg(float deg);
+double				radian_deg(double deg);
+void				apply_calmat(t_env *e, t_vec *m, t_matransf *mt);
+void				apply_calmat2(t_env *e, t_vec *m, t_matransf *mt);
+void				calculated_transl(t_vec *m, t_matransf *mt, t_env *e);
+void				calculated_scal(t_vec *m, t_matransf *mt, t_env *e);
+void				apply_calmat3(t_env *e, t_vec *m, t_matransf *mt);
 #endif

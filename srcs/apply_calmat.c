@@ -6,56 +6,34 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 12:17:12 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/05 18:07:29 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/07 13:41:20 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void			apply_calmat2(t_env *e, t_vec *m, t_matransf *mt)
+void		apply_calmat(t_env *e, t_vec *m, t_matransf *mt)
 {
-	//t_vec		*tmp;
-	int			x;
-	int			y;
+	int		i;
 
-//	tmp = e->map.vertex;
-	y = 0;
-	while (y < e->map.nb_line + 1)
+	i = 0;
+	while (i < e->map.points)
 	{
-		x = 0;
-		while (x < e->map.pt_line)
-		{
-			e->mat.a = *m;
-			e->mat.b = *(m + 1);
-			calculated_matrice(m, mt);
-			x++;
-			m++;
-		}
+		calculated_matrice(m, mt, e);
+		i++;
 		m++;
-		y++;
 	}
 }
 
-void			apply_calmat(t_env *e, t_vec *m, t_matransf *mt)
+void		apply_calmat3(t_env *e, t_vec *m, t_matransf *mt)
 {
-//	t_vec		*tmp;
-	int			x;
-	int			y;
+	int		i;
 
-//	tmp = e->map.vertex;
-	y = 0;
-	while (y < e->map.nb_line)
+	i = 0;
+	while (i < e->map.points)
 	{
-		x = 0;
-		while (x < e->map.pt_line + 1)
-		{
-			e->mat.a = *m;
-			e->mat.b = *(m + 1);
-			calculated_matrice(m, mt);
-			x++;
-			m++;
-		}
+		calculated_scal(m, mt, e);
+		i++;
 		m++;
-		y++;
 	}
 }
