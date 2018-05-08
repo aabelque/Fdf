@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 12:48:03 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/07 15:08:20 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/08 16:27:27 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ int			main(int ac, char **av)
 		ft_error_malloc();
 	display_controls2();
 	parse_map(&av[1], e);
+	e->degx = 0;
+	e->degy = 0;
+	e->degz = 0;
 	get_center(e);
 	init_mlx(e);
 	mlx_loop(e->mlx);

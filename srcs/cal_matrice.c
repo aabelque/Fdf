@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 17:22:16 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/07 15:56:51 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/08 16:11:53 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,20 @@ void		matcal_rot(t_env *e, double deg, char axe)
 	t_matransf calrmat;
 
 	if (axe == 'x')
+	{
+		e->degx += deg;
 		calrmat = rotxmat(deg);
+	}
 	else if (axe == 'y')
+	{
+		e->degy += deg;
 		calrmat = rotymat(deg);
+	}
 	else
+	{
+		e->degz += deg;
 		calrmat = rotzmat(deg);
+	}
 	apply_calmat(e, e->map.vertex, &calrmat);
 }
 

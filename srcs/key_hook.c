@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 11:25:41 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/08 15:14:39 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/08 18:19:50 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,25 @@ static	void	key_hook_rot(int keycode, t_env *e)
 static	void	key_hook_transl(int keycode, t_env *e)
 {
 	if (keycode == K_UP)
+	{
+		e->center.y += TUP;
 		matcal_transl(e, 0, TUP, 0);
+	}
 	if (keycode == K_DOWN)
+	{
+		e->center.y += TDO;
 		matcal_transl(e, 0, TDO, 0);
+	}
 	if (keycode == K_LEFT)
+	{
+		e->center.x += TLEFT;
 		matcal_transl(e, TLEFT, 0, 0);
+	}
 	if (keycode == K_RIGHT)
+	{
+		e->center.x += TRIGHT;
 		matcal_transl(e, TRIGHT, 0, 0);
+	}
 }
 
 static	void	key_hook_scal(int keycode, t_env *e)
@@ -50,7 +62,6 @@ static	void	key_hook_scal(int keycode, t_env *e)
 
 int				key_hook(int keycode, t_env *e)
 {
-	get_center(e);
 	if (keycode == K_ESC)
 	{
 		mlx_destroy_window(e->mlx, e->win);

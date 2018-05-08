@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/08 15:14:31 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/08 18:27:53 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,17 @@
 
 # define NB_COLORMAX 24
 
-# define MOVXUP M_PI / 180
-# define MOVXDO -M_PI / 180
-# define MOVYUP M_PI / 180
-# define MOVYDO -M_PI / 180
-# define MOVZUP M_PI / 180
-# define MOVZDO -M_PI / 180
+# define MOVXUP M_PI / 74
+# define MOVXDO -M_PI / 74
+# define MOVYUP M_PI / 74
+# define MOVYDO -M_PI / 74
+# define MOVZUP M_PI / 74
+# define MOVZDO -M_PI / 74
 
-# define TUP -100
-# define TDO 100
-# define TLEFT -100
-# define TRIGHT 100
+# define TUP -50
+# define TDO 50
+# define TLEFT -50
+# define TRIGHT 50
 
 # define SPLUS 1.1
 # define SLESS 0.9
@@ -75,7 +75,7 @@ typedef enum		e_key
 	K_DOWN,
 	K_UP,
 	K_ROTX = 0,
-	K_ROTX2 = 12, 
+	K_ROTX2 = 12,
 	K_ROTY = 2,
 	K_ROTY2 = 14,
 	K_ROTZ = 13,
@@ -141,6 +141,9 @@ typedef struct		s_env
 	int				ret;
 	int				i;
 	int				color;
+	double			degx;
+	double			degy;
+	double			degz;
 	t_vec			center;
 	t_matrice		mat;
 	t_map			map;

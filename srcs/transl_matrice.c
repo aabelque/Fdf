@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 16:46:10 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/07 13:49:49 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/08 16:51:22 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void			calculated_scal(t_vec *m, t_matransf *mt, t_env *e)
 	double		tz;
 	double		tw;
 
-	(void)e;
+	m->x -= e->center.x;
+	m->y -= e->center.y;
 	tx = mt->v1.x * m->x;
 	ty = mt->v2.y * m->y;
 	tz = mt->v3.z * m->z;
@@ -28,6 +29,8 @@ void			calculated_scal(t_vec *m, t_matransf *mt, t_env *e)
 	m->y = ty;
 	m->z = tz;
 	m->w = tw;
+	m->x += e->center.x;
+	m->y += e->center.y;
 }
 
 t_matransf		transl_mat(double x, double y, double z)

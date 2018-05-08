@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 13:12:27 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/07 11:00:16 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/08 18:19:38 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static	void		bresenham2(t_env *e, t_vec2 er, int *addr)
 	in.y = e->mat.a.y > e->mat.b.y ? -1 : 1;
 	while (i <= ddy)
 	{
-		addr[(int)e->mat.a.x + (int)e->mat.a.y * X_WIN] = e->color;
+		if (!out_map(&e->mat.a))
+			addr[(int)e->mat.a.x + (int)e->mat.a.y * X_WIN] = e->color;
 		i++;
 		e->mat.a.y += in.y;
 		er.y -= d.x;
@@ -52,7 +53,8 @@ static	void		bresenham1(t_env *e, t_vec2 er, int *addr)
 	in.y = e->mat.a.y > e->mat.b.y ? -1 : 1;
 	while (i <= ddx)
 	{
-		addr[(int)e->mat.a.x + (int)e->mat.a.y * X_WIN] = e->color;
+		if (!out_map(&e->mat.a))
+			addr[(int)e->mat.a.x + (int)e->mat.a.y * X_WIN] = e->color;
 		i++;
 		e->mat.a.x += in.x;
 		er.x -= d.y;
