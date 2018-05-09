@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/08 18:27:53 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/09 12:45:56 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@
 # define SPLUS 1.1
 # define SLESS 0.9
 
-# define X_WIN 2048
-# define Y_WIN 1152
+# define X_WIN 2560
+# define Y_WIN 1440
 # define SCALE 10
 
 typedef enum		e_key
@@ -168,6 +168,9 @@ void				ft_error_malloc(void);
 void				parse_map(char **av, t_env *e);
 int					ft_nb_line(char **av);
 char				*display_controls(void);
+char				*display_controls3(void);
+char				*display_controls4(void);
+char				*display_controls5(void);
 void				display_controls2(void);
 t_vec				newvec(double x, double y, double z, double w);
 t_matransf			rotxmat(double deg);
