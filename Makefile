@@ -6,17 +6,17 @@
 #    By: aabelque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 12:34:03 by aabelque          #+#    #+#              #
-#    Updated: 2018/05/12 17:54:51 by aabelque         ###   ########.fr        #
+#    Updated: 2018/05/13 18:40:48 by aabelque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FRAMEWORKS =-framework OpenGL -framework AppKit
+FRAMEWORKS = -framework OpenGL -framework AppKit
 
 NAME = fdf
 
 CC = gcc
 
-CFLAG = -O3 -Wall -Werror -Wextra -g
+CFLAG = -Wall -Werror -Wextra -g
 
 MAKE = make
 

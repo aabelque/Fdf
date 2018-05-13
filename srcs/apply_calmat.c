@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 12:17:12 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/11 17:57:51 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/13 18:09:42 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,7 @@ void		apply_calmat3(t_env *e, t_vec *m, t_matransf *mt)
 	i = 0;
 	while (i < e->map.points)
 	{
-		calculated_pers(m, mt, e);
-		i++;
-		m++;
-	}
-}
-
-void		apply_calmat4(t_env *e, t_vec *m, t_matransf *mt)
-{
-	int		i;
-
-	i = 0;
-	while (i < e->map.points)
-	{
-		calculated_z(m, mt, e);
+		calculated_cav(m, mt, e);
 		i++;
 		m++;
 	}

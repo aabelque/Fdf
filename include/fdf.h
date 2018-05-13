@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/13 12:34:06 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/13 18:40:52 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,7 @@
 
 # define X_WIN 2560
 # define Y_WIN 1440
-# define SCALE 10
-# define ZH 2
-# define XH 0.5
-
-# define AR X_WIN / Y_WIN
+# define SCALE 15
 
 typedef enum		e_key
 {
@@ -88,9 +84,6 @@ typedef enum		e_key
 	K_SLESS = 78,
 	K_SPLUS = 69,
 	K_PERS = 35,
-	K_NOPER = 34,
-	K_Z = 6,
-	K_X = 7,
 	K_V = 9,
 	K_B = 11,
 	K_G = 5
@@ -216,13 +209,11 @@ void				apply_calmat(t_env *e, t_vec *m, t_matransf *mt);
 void				apply_calmat2(t_env *e, t_vec *m, t_matransf *mt);
 void				calculated_transl(t_vec *m, t_matransf *mt, t_env *e);
 void				calculated_scal(t_vec *m, t_matransf *mt, t_env *e);
-void				calculated_pers(t_vec *m, t_matransf *mt, t_env *e);
-void				calculated_z(t_vec *m, t_matransf *mt, t_env *e);
+void				calculated_cav(t_vec *m, t_matransf *mt, t_env *e);
 void				apply_calmat2(t_env *e, t_vec *m, t_matransf *mt);
 void				apply_calmat3(t_env *e, t_vec *m, t_matransf *mt);
 void				apply_calmat4(t_env *e, t_vec *m, t_matransf *mt);
 double				rad_deg(double deg);
-void				matcal_pers(t_env *e, double fov, double nz, double fz);
-void				matcal_z(t_env *e, double z);
-t_matransf			matrixpers(double fov, double nz, double fz);
+void				matcal_cav(t_env *e, double deg);
+t_matransf			matrixcav(double deg);
 #endif

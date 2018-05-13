@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 17:22:16 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/13 12:33:06 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/13 18:05:54 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,10 @@ void			matcal_scal(t_env *e, double s)
 	apply_calmat2(e, e->map.vertex, &calsmat);
 }
 
-void			matcal_pers(t_env *e, double fov, double nz, double fz)
+void			matcal_cav(t_env *e, double deg)
 {
 	t_matransf	calpmat;
-//	double		fov2;
 
-//	fov2 = 90.0;
-	calpmat = matrixpers(fov, nz, fz);
+	calpmat = matrixcav(deg);
 	apply_calmat3(e, e->map.vertex, &calpmat);
-}
-
-void			matcal_z(t_env *e, double z)
-{
-	t_matransf	calzmat;
-
-	calzmat = matrix_z(z);
-	apply_calmat4(e, e->map.vertex, &calzmat);
 }

@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 11:50:24 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/09 15:04:39 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/13 18:24:20 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Quit:\n\
 	KEY: ESC\n\
 \n\
 Color:\n\
-	KEY: C\n\
+	KEY: C,V,B,G\n\
 \n\
 Rotation:\n\
 	RotX: A,Q\n\
@@ -49,10 +49,10 @@ char		*display_controls(void)
 CONTROLS: \n\
 \n\
 Quit-> \n\
-	ESC \n\
+	ESC | \n\
 \n\
 Color-> \n\
-	C\n\
+	C,V,B,G\n\
 ";
 	return (str);
 }
@@ -93,8 +93,10 @@ char		*display_controls5(void)
 CONTROLS: \n\
 \n\
 SCALE-> \n\
-	Widen: + \n\
-	Narrow: -\n\
+	P: + \n\
+	M: - | \n\
+\n\
+EFFET-> P\n\
 ";
 	return (str);
 }
