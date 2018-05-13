@@ -6,14 +6,14 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/09 12:45:56 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/13 12:34:06 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# include <mlx.h>
+# include "mlx.h"
 # include <math.h>
 # include "libft.h"
 # include <stdlib.h>
@@ -42,15 +42,16 @@
 # define C_ORANGE 0x00ed7f10
 # define C_MILITARY 0x00596643
 # define C_WHITE 0x00fefefe
+# define C_BLACK 0x00000000
 
 # define NB_COLORMAX 24
 
-# define MOVXUP M_PI / 74
-# define MOVXDO -M_PI / 74
-# define MOVYUP M_PI / 74
-# define MOVYDO -M_PI / 74
-# define MOVZUP M_PI / 74
-# define MOVZDO -M_PI / 74
+# define MOVXUP M_PI / 64
+# define MOVXDO -M_PI / 64
+# define MOVYUP M_PI / 64
+# define MOVYDO -M_PI / 64
+# define MOVZUP M_PI / 64
+# define MOVZDO -M_PI / 64
 
 # define TUP -50
 # define TDO 50
@@ -63,6 +64,10 @@
 # define X_WIN 2560
 # define Y_WIN 1440
 # define SCALE 10
+# define ZH 2
+# define XH 0.5
+
+# define AR X_WIN / Y_WIN
 
 typedef enum		e_key
 {
@@ -81,7 +86,14 @@ typedef enum		e_key
 	K_ROTZ = 13,
 	K_ROTZ2 = 1,
 	K_SLESS = 78,
-	K_SPLUS = 69
+	K_SPLUS = 69,
+	K_PERS = 35,
+	K_NOPER = 34,
+	K_Z = 6,
+	K_X = 7,
+	K_V = 9,
+	K_B = 11,
+	K_G = 5
 }					t_key;
 
 typedef struct		s_img
@@ -92,6 +104,14 @@ typedef struct		s_img
 	int				s_line;
 	int				endian;
 }					t_img;
+
+typedef struct		s_color
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	unsigned char	a;
+}					t_color;
 
 typedef struct		s_vec
 {
@@ -141,16 +161,20 @@ typedef struct		s_env
 	int				ret;
 	int				i;
 	int				color;
+	int				color2;
 	double			degx;
 	double			degy;
 	double			degz;
+	double			dega;
 	t_vec			center;
 	t_matrice		mat;
 	t_map			map;
 	t_img			img;
 }					t_env;
 
+t_color				color_interp(int color1, int color2, double t);
 void				set_colors(int *color);
+void				set_colors2(int *color);
 void				draw2(t_env *e);
 void				draw(t_env *e);
 void				*lst_to_array(t_list *vector);
@@ -178,6 +202,7 @@ t_matransf			rotymat(double deg);
 t_matransf			rotzmat(double deg);
 t_matransf			transl_mat(double x, double y, double z);
 t_matransf			scal_mat(double s);
+t_matransf			matrix_z(double z);
 void				calculated_matrice(t_vec *m, t_matransf *mt, t_env *e);
 void				matcal_rot(t_env *e, double deg, char axe);
 void				matcal_transl(t_env *e, double x, double y, double z);
@@ -187,10 +212,17 @@ int					expose_hook(t_env *e);
 void				get_center(t_env *e);
 void				map_control(t_env *e);
 int					out_map(t_vec *vertex);
-double				radian_deg(double deg);
 void				apply_calmat(t_env *e, t_vec *m, t_matransf *mt);
 void				apply_calmat2(t_env *e, t_vec *m, t_matransf *mt);
 void				calculated_transl(t_vec *m, t_matransf *mt, t_env *e);
 void				calculated_scal(t_vec *m, t_matransf *mt, t_env *e);
+void				calculated_pers(t_vec *m, t_matransf *mt, t_env *e);
+void				calculated_z(t_vec *m, t_matransf *mt, t_env *e);
+void				apply_calmat2(t_env *e, t_vec *m, t_matransf *mt);
 void				apply_calmat3(t_env *e, t_vec *m, t_matransf *mt);
+void				apply_calmat4(t_env *e, t_vec *m, t_matransf *mt);
+double				rad_deg(double deg);
+void				matcal_pers(t_env *e, double fov, double nz, double fz);
+void				matcal_z(t_env *e, double z);
+t_matransf			matrixpers(double fov, double nz, double fz);
 #endif

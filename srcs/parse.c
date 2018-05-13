@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 11:35:48 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/08 16:34:48 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/13 14:54:31 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void			create_vec(t_env *e, int j)
 	i = 0;
 	while (e->map.line[i])
 	{
-		vec.x = (double)i * SCALE + 700;
-		vec.y = (double)j * SCALE + 300;
-		vec.z = (double)ft_atoi(e->map.line[i]) * 2;
+		vec.x = (double)i * SCALE + (X_WIN / 10);
+		vec.y = (double)j * SCALE + (Y_WIN / 10);
+		vec.z = (double)ft_atoi(e->map.line[i]);
 		vec.w = 1;
 		if (!(tmp = ft_lstnew((void const *)&vec, sizeof(t_vec))))
 			ft_error_malloc();
@@ -59,6 +59,8 @@ void			parse_map(char **av, t_env *e)
 	int			j;
 
 	j = 0;
+	if ((e->fd = open(*av, O_RDONLY)) < 0)
+		ft_error("it's not a good file");
 	if ((e->fd = open(*av, O_RDONLY)) > 0)
 	{
 		while ((e->ret = get_next_line(e->fd, &line)) > 0)
@@ -70,6 +72,8 @@ void			parse_map(char **av, t_env *e)
 			free_tab(e->map.line);
 			j++;
 		}
+		if (e->ret == -1)
+			ft_error("error file");
 		e->map.nb_line = j;
 		e->map.points = e->map.pt_line * e->map.nb_line;
 		e->map.vertex = lst_to_array(e->map.vector);

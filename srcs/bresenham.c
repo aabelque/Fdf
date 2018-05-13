@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/25 13:12:27 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/08 18:19:38 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/13 12:05:11 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static	void		bresenham1(t_env *e, t_vec2 er, int *addr)
 	while (i <= ddx)
 	{
 		if (!out_map(&e->mat.a))
-			addr[(int)e->mat.a.x + (int)e->mat.a.y * X_WIN] = e->color;
+			addr[(int)e->mat.a.x + (int)e->mat.a.y * X_WIN] = e->color2;
 		i++;
 		e->mat.a.x += in.x;
 		er.x -= d.y;

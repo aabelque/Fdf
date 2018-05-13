@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 12:48:03 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/08 16:27:27 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/13 12:50:30 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int			main(int ac, char **av)
 	int		i;
 
 	i = 0;
-	if (ac < 2)
+	if (ac != 2)
 		error("Usage : ./fdf <filename>");
 	if (!(e = ft_memalloc(sizeof(t_env))))
 		ft_error_malloc();
-	display_controls2();
 	parse_map(&av[1], e);
+	display_controls2();
 	e->degx = 0;
 	e->degy = 0;
 	e->degz = 0;

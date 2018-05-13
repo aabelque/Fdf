@@ -6,7 +6,7 @@
 #    By: aabelque <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/21 12:34:03 by aabelque          #+#    #+#              #
-#    Updated: 2018/05/05 16:59:27 by aabelque         ###   ########.fr        #
+#    Updated: 2018/05/12 17:54:51 by aabelque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRC = srcs/main.c \
 	  srcs/cal_matrice.c \
 	  srcs/key_hook.c \
 	  srcs/apply_calmat.c \
-	  srcs/map_control.c
+	  srcs/map_control.c \
+	  srcs/proj_matrix.c \
 
 OBJS = $(SRC:%.c=%.o)
 	INCDIR = include/

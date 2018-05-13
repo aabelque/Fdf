@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 13:07:41 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/09 12:48:07 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/13 12:33:10 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ int			loop_hook(t_env *e)
 int			init_mlx(t_env *e)
 {
 	set_colors(&(e->color));
-	e->mlx = mlx_init();
+	set_colors2(&(e->color2));
+	if ((e->mlx = mlx_init()) == NULL)
+		return (EXIT_FAILURE);
 	e->win = mlx_new_window(e->mlx, X_WIN, Y_WIN, "FDF");
 	e->img.img = mlx_new_image(e->mlx, X_WIN, Y_WIN);
 	e->img.addr = (int*)mlx_get_data_addr(e->img.img, &(e->img.bpp),
