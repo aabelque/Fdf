@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/05 11:25:41 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/13 18:25:17 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/14 11:21:05 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static	void	key_hook_transl(int keycode, t_env *e)
 		e->center.x += TRIGHT;
 		matcal_transl(e, TRIGHT, 0, 0);
 	}
-	if (keycode == K_PERS)
+	if (keycode == K_CAV)
 		matcal_cav(e, 63.4);
 }
 

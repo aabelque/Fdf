@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/13 18:40:52 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/14 11:21:02 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@
 
 # define NB_COLORMAX 24
 
-# define MOVXUP M_PI / 64
-# define MOVXDO -M_PI / 64
-# define MOVYUP M_PI / 64
-# define MOVYDO -M_PI / 64
-# define MOVZUP M_PI / 64
-# define MOVZDO -M_PI / 64
+# define MOVXUP M_PI / 54
+# define MOVXDO -M_PI / 54
+# define MOVYUP M_PI / 54
+# define MOVYDO -M_PI / 54
+# define MOVZUP M_PI / 54
+# define MOVZDO -M_PI / 54
 
 # define TUP -50
 # define TDO 50
@@ -83,7 +83,7 @@ typedef enum		e_key
 	K_ROTZ2 = 1,
 	K_SLESS = 78,
 	K_SPLUS = 69,
-	K_PERS = 35,
+	K_CAV = 35,
 	K_V = 9,
 	K_B = 11,
 	K_G = 5
@@ -165,7 +165,6 @@ typedef struct		s_env
 	t_img			img;
 }					t_env;
 
-t_color				color_interp(int color1, int color2, double t);
 void				set_colors(int *color);
 void				set_colors2(int *color);
 void				draw2(t_env *e);
@@ -180,8 +179,8 @@ void				create_vec(t_env *e, int j);
 void				free_tab(char **tab);
 void				ft_error(char *str);
 void				ft_error_map(void);
-int					ft_valid_map(t_env *e);
 void				ft_error_malloc(void);
+int					ft_valid_map(t_env *e);
 void				parse_map(char **av, t_env *e);
 int					ft_nb_line(char **av);
 char				*display_controls(void);
@@ -195,11 +194,11 @@ t_matransf			rotymat(double deg);
 t_matransf			rotzmat(double deg);
 t_matransf			transl_mat(double x, double y, double z);
 t_matransf			scal_mat(double s);
-t_matransf			matrix_z(double z);
-void				calculated_matrice(t_vec *m, t_matransf *mt, t_env *e);
+t_matransf			matrixcav(double deg);
 void				matcal_rot(t_env *e, double deg, char axe);
 void				matcal_transl(t_env *e, double x, double y, double z);
 void				matcal_scal(t_env *e, double s);
+void				matcal_cav(t_env *e, double deg);
 void				redraw(t_env *e);
 int					expose_hook(t_env *e);
 void				get_center(t_env *e);
@@ -207,13 +206,10 @@ void				map_control(t_env *e);
 int					out_map(t_vec *vertex);
 void				apply_calmat(t_env *e, t_vec *m, t_matransf *mt);
 void				apply_calmat2(t_env *e, t_vec *m, t_matransf *mt);
+void				apply_calmat3(t_env *e, t_vec *m, t_matransf *mt);
+void				calculated_matrice(t_vec *m, t_matransf *mt, t_env *e);
 void				calculated_transl(t_vec *m, t_matransf *mt, t_env *e);
 void				calculated_scal(t_vec *m, t_matransf *mt, t_env *e);
 void				calculated_cav(t_vec *m, t_matransf *mt, t_env *e);
-void				apply_calmat2(t_env *e, t_vec *m, t_matransf *mt);
-void				apply_calmat3(t_env *e, t_vec *m, t_matransf *mt);
-void				apply_calmat4(t_env *e, t_vec *m, t_matransf *mt);
 double				rad_deg(double deg);
-void				matcal_cav(t_env *e, double deg);
-t_matransf			matrixcav(double deg);
 #endif
