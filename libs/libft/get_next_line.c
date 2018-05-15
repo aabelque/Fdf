@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 18:39:30 by aabelque          #+#    #+#             */
-/*   Updated: 2018/03/05 13:41:52 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/15 20:56:00 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ int						get_next_line(int const fd, char **line)
 		if (result == -1)
 			return (-1);
 	}
+	if (ret == 0)
+		return (0);
 	if ((*line = ft_get(fd, &stock)) != NULL)
 		return (1);
 	return (0);
