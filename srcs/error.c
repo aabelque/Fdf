@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:21:16 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/13 12:47:28 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/16 18:27:28 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int				ft_valid_map(t_env *e)
 	static int	count;
 
 	i = 0;
-	while (e->map.line[i])
+	while (e->map.line && e->map.line[i])
 		i++;
 	if (i == 0)
 	{

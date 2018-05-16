@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 18:39:30 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/15 20:56:00 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/16 18:27:24 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static	char			*ft_get(int fd, t_list **stock)
 	char				*tmp;
 
 	elem = ft_find(fd, stock);
-	if (elem->content == NULL)
+	if (!elem || elem->content == NULL)
 		return (NULL);
 	if ((fin = ft_strstr((char *)elem->content, "\n")) != NULL)
 	{
@@ -107,8 +107,6 @@ int						get_next_line(int const fd, char **line)
 		if (result == -1)
 			return (-1);
 	}
-	if (ret == 0)
-		return (0);
 	if ((*line = ft_get(fd, &stock)) != NULL)
 		return (1);
 	return (0);

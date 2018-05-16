@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 11:35:48 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/15 20:55:43 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/16 18:27:29 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			parse_map(char **av, t_env *e)
 		ft_error("it's not a good file");
 	if ((e->fd = open(*av, O_RDONLY)) > 0)
 	{
-		while ((e->ret = get_next_line(e->fd, &line)) > 0)
+		while ((e->ret = get_next_line(e->fd, &line)) >= 0)
 		{
 			e->map.line = ft_strsplit(line, ' ');
 			e->map.pt_line = ft_valid_map(e);
@@ -72,11 +72,10 @@ void			parse_map(char **av, t_env *e)
 			free_tab(e->map.line);
 			j++;
 		}
-		if (e->ret <= 0)
+		if (e->ret < 0)
 			ft_error("error file");
 		e->map.nb_line = j;
 		e->map.points = e->map.pt_line * e->map.nb_line;
 		e->map.vertex = lst_to_array(e->map.vector);
 	}
-	close(e->fd);
 }
