@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/04 17:22:16 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/13 18:05:54 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/17 09:36:28 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void			calculated_matrice(t_vec *m, t_matransf *mt, t_env *e)
 	double		ty;
 	double		tz;
 	double		tw;
+	
+	(void)e;
 
 	m->x -= e->center.x;
 	m->y -= e->center.y;
