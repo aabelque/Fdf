@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:39:53 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/14 11:21:02 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/17 10:36:20 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,6 @@ typedef struct		s_img
 	int				endian;
 }					t_img;
 
-typedef struct		s_color
-{
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	unsigned char	a;
-}					t_color;
-
 typedef struct		s_vec
 {
 	double			x;
@@ -169,7 +161,7 @@ void				set_colors(int *color);
 void				set_colors2(int *color);
 void				draw2(t_env *e);
 void				draw(t_env *e);
-void				*lst_to_array(t_list *vector);
+void				*lst_to_array(t_list *vector, t_env *e);
 void				bresenham(t_env *e, int *addr);
 int					init_mlx(t_env *e);
 int					loop_hook(t_env *e);
@@ -177,9 +169,9 @@ int					key_hook(int keycode, t_env *e);
 void				print_vlist(t_list *vector);
 void				create_vec(t_env *e, int j);
 void				free_tab(char **tab);
-void				ft_error(char *str);
-void				ft_error_map(void);
-void				ft_error_malloc(void);
+void				ft_error(char *str, t_env *e);
+void				ft_error_map(t_env *e);
+void				ft_error_malloc(t_env *e);
 int					ft_valid_map(t_env *e);
 void				parse_map(char **av, t_env *e);
 int					ft_nb_line(char **av);

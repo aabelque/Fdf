@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/16 13:07:41 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/13 17:54:27 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/17 11:07:34 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		redraw(t_env *e)
 	draw(e);
 	draw2(e);
 	if (mlx_put_image_to_window(e->mlx, e->win, e->img.img, 0, 0) == -1)
-		ft_error("fail to put image");
+		ft_error("fail to put image", e);
 	mlx_string_put(e->mlx, e->win, X_WIN - 400, 1, C_WHITE, str);
 	mlx_string_put(e->mlx, e->win, X_WIN - 400, 20, C_WHITE, str2);
 	mlx_string_put(e->mlx, e->win, X_WIN - 400, 39, C_WHITE, str3);
@@ -56,7 +56,7 @@ int			loop_hook(t_env *e)
 	draw(e);
 	draw2(e);
 	if (mlx_put_image_to_window(e->mlx, e->win, e->img.img, 0, 0) == -1)
-		ft_error("fail to put image");
+		ft_error("fail to put image", e);
 	mlx_string_put(e->mlx, e->win, X_WIN - 400, 1, C_WHITE, str);
 	mlx_string_put(e->mlx, e->win, X_WIN - 400, 20, C_WHITE, str2);
 	mlx_string_put(e->mlx, e->win, X_WIN - 400, 39, C_WHITE, str3);

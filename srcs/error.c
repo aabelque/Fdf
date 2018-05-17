@@ -6,7 +6,7 @@
 /*   By: aabelque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/19 14:21:16 by aabelque          #+#    #+#             */
-/*   Updated: 2018/05/16 18:27:28 by aabelque         ###   ########.fr       */
+/*   Updated: 2018/05/17 11:40:47 by aabelque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,32 @@ void			free_tab(char **tab)
 	free(tab);
 }
 
-void			ft_error(char *str)
+void			ft_error(char *str, t_env *e)
 {
+	e->mlx = NULL;
+	e->win = NULL;
+	e->img.img = NULL;
+	free(e);
 	ft_putendl(str);
 	exit(1);
 }
 
-void			ft_error_map(void)
+void			ft_error_map(t_env *e)
 {
+	e->mlx = NULL;
+	e->win = NULL;
+	e->img.img = NULL;
+	free(e);
 	ft_putendl("map error");
 	exit(1);
 }
 
-void			ft_error_malloc(void)
+void			ft_error_malloc(t_env *e)
 {
+	e->mlx = NULL;
+	e->win = NULL;
+	e->img.img = NULL;
+	free(e);
 	ft_putendl("malloc error");
 	exit(1);
 }
